@@ -1,0 +1,14 @@
+
+# Recently Viewed Setup
+
+So, once you have installed the module and added the database table (this is packaged in and labeled as recentlyViewed.sql) you can do product setup.
+
+Pop the following code at the top of your product page template
+```php
+use Module\Recentlyviewed\Controllers\Frontend as RecentlyviewedFacade;
+$recentlyViewed = new RecentlyviewedFacade;
+$recentlyViewed->addProduct($product['product_id']);
+```
+
+If you have any questions, you can message me on Discord (james0240) OR email me at james@netbizgroup.co.uk
+
