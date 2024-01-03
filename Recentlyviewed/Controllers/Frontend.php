@@ -19,6 +19,7 @@ class Frontend extends BaseController {
             if(!$recentlyViewed) {
                 $recentlyViewedModel->insert([
                     'cookie_value' => $_COOKIE['javelin_recentlyViewed'],
+                    'products' => json_encode([]),
                 ]);
             }
         }
@@ -87,11 +88,8 @@ class Frontend extends BaseController {
 
         $products = json_decode($recentlyViewed['products'], true);
 
-        if (is_array($products) && !in_array($productID, $products)) {
+        if (!in_array($productID, $products)) {
             array_unshift($products, $productID);
-        } else {
-            // Make a new array
-            $products = [$productID];
         }
 
         $recentlyViewedModel->where('id', $recentlyViewed['id'])->delete();
